@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Satisfacción</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Encuesta de Satisfacción</h1>
+        
+        <form id="encuestaForm">
+            <div class="form-group">
+                <label>Nombre completo:</label>
+                <input type="text" required>
+                
+                <label>Correo electrónico:</label>
+                <input type="email" required>
+                
+                <label>Teléfono:</label>
+                <input type="tel" required>
+                
+                <label>Fecha:</label>
+                <input type="date" required>
+            </div>
+
+            <!-- Preguntas -->
+            <div class="form-group">
+                <p>1. ¿Estuvo satisfecho con nuestro servicio?</p>
+                <div class="star-rating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                    <input type="hidden" name="pregunta1" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <p>2. ¿Como califica la actitud de nuestros animadores?</p>
+                <div class="star-rating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                    <input type="hidden" name="pregunta1" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <p>3. ¿La imagen de nuestro personal fue la adecuada?</p>
+                <div class="star-rating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                    <input type="hidden" name="pregunta1" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <p>4. ¿La integracion, material y juegos por parte de nuestos animadores fueron lo que usted esperaba?</p>
+                <div class="star-rating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                    <input type="hidden" name="pregunta1" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <p>5. ¿Recomendaria nuestros servicios?</p>
+                <div class="star-rating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                    <input type="hidden" name="pregunta1" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <p>Observaciones adicionales:</p>
+                <textarea placeholder="Escribe aquí tus comentarios..."></textarea>
+            </div>
+
+            <button type="submit">Enviar Encuesta</button>
+        </form>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
