@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rick and Morty API</title>
+</head>
+<body>
+    <h1>Personajes de Rick and Morty</h1>
+    <button onclick="fetchCharacters()">Mostrar personajes</button>
+    <div id="characters"></div>
+
+    <script>
+        function fetchCharacters() {
+            // Hacer petición a la API
+            fetch('https://rickandmortyapi.com/api/character')
+                .then(response => {
+                    if (!response.ok) throw new Error('Error en la petición');
+                    return response.json();
+                })
+                .then(data => {
+                    displayCharacters(data.results);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('characters').innerHTML = 
+                        `<p>¡Error al cargar los datos! ${error}</p>`;
+                });
+        }
+
+        function displayCharacters(characters) {
+            const container = document.getElementById('characters');
+            container.innerHTML = characters
+                .slice(0, 6) // Mostrar primeros 6 personajes
+                .map(character => `
+                    <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                        <img src="${character.image}" alt="${character.name}" width="100">
+                        <h3>${character.name}</h3>
+                        <p>Especie: ${character.species}</p>
+                        <p>Estado: ${character.status}</p>
+                    </div>
+                `).join('');
+        }
+    </script>
+</body>
+</html>
