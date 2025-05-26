@@ -1,18 +1,17 @@
-function fetchCharacters() {
-    fetch('https://rickandmortyapi.com/api/character')
-        .then(response => {
-            if (!response.ok) throw new Error('Error en la petición');
-            return response.json();
-        })
-        .then(data => {
-            console.log(data.results)
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById('characters').innerHTML = 
-                `<p>¡Error al cargar los datos! ${error}</p>`;
-        });
+// api.js
+const API_URL = 'http://localhost:3000/api';
+
+export async function enviarEncuesta(data) {
+  const response = await fetch(`${API_URL}/encuesta`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Error ${response.status}: ${text}`);
+  }
+
+  return await response.json();
 }
-
-
-fetchCharacters()

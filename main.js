@@ -1,23 +1,22 @@
-document.addEventListener('DOMContentLoaded', function() {
+// main.js
+import { enviarEncuesta } from './api.js';
+
+document.addEventListener('DOMContentLoaded', function () {
     const stars = document.querySelectorAll('.star');
     const form = document.getElementById('encuestaForm');
-    const submitButton = form.querySelector('button[type="submit"]');
     const modal = document.getElementById('modal');
     const closeModal = document.getElementById('closeModal');
 
-    // Obtener la fecha actual y restar 6 meses
+    // Limitar fecha máxima a hace 6 meses
     const currentDate = new Date();
-    currentDate.setMonth(currentDate.getMonth() - 6); // Restar 6 meses
-
-    // Formatear la fecha a 'YYYY-MM-DD'
+    currentDate.setMonth(currentDate.getMonth() - 6);
     const formattedDate = currentDate.toISOString().split('T')[0];
-
-    // Asignar la fecha máxima al campo de fecha
     const dateInput = form.querySelector('input[type="date"]');
     dateInput.setAttribute('max', formattedDate);
 
+    // Estrellas
     stars.forEach(star => {
-        star.addEventListener('click', function() {
+        star.addEventListener('click', function () {
             const rating = this.dataset.value;
             const container = this.parentElement;
             const hiddenInput = container.querySelector('input[type="hidden"]');
@@ -32,11 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    form.addEventListener('submit', function(e) {
+    // Enviar formulario
+    form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        modal.style.display = 'flex';
 
-        // Capturar datos
         const formData = {
             nombre: form.querySelector('input[type="text"]').value,
             email: form.querySelector('input[type="email"]').value,
@@ -50,31 +48,24 @@ document.addEventListener('DOMContentLoaded', function() {
             observaciones: form.querySelector('textarea').value
         };
 
-        console.log("📋 Datos capturados:", formData);
-
-        fetch('', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("✅ Respuesta del servidor:", data);
+        try {
+            const response = await enviarEncuesta(formData);
+            console.log("✅ Respuesta del servidor:", response);
             modal.style.display = 'flex';
-
-            setTimeout(() => {
-                form.reset();
-                document.querySelectorAll('.star').forEach(star => star.classList.remove('active'));
-            }, 500);
-        })
-        .catch(error => console.error("❌ Error al enviar datos:", error));
+            form.reset();
+            document.querySelectorAll('.star').forEach(star => star.classList.remove('active'));
+        } catch (error) {
+            console.error("❌ Error al enviar datos:", error);
+            alert("Hubo un error al enviar tu encuesta. Intenta de nuevo.");
+        }
     });
 
-    closeModal.addEventListener('click', function() {
+    // Modal
+    closeModal.addEventListener('click', function () {
         modal.style.display = 'none';
     });
 
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', function (event) {
         if (event.target === modal) {
             modal.style.display = 'none';
         }
