@@ -4,6 +4,6 @@ const { guardarEncuesta, obtenerEncuestas } = require('../controllers/encuestaCo
 const { verificarToken } = require('../middlewares/authMiddleware');
 
 router.post('/', guardarEncuesta);
-router.get('/todas', verificarToken, obtenerEncuestas); // solo admins logueados
+router.get('/todas', verificarToken, obtenerEncuestas);
 
 module.exports = router;

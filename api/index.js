@@ -8,6 +8,5 @@ app.use(express.json());
 app.use('/api/encuesta', require('./routes/encuesta'));
 app.use('/api/auth', require('./routes/auth'));
 
-app.listen(3000, () => {
-    console.log('API corriendo en http://localhost:3000');
-});
+const PORT = 3000;
+app.listen(PORT, () => console.log(`✅ API corriendo en http://localhost:${PORT}`));
