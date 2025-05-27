@@ -50,7 +50,8 @@ h1 {
 input[type="text"], 
 input[type="email"], 
 input[type="tel"], 
-input[type="date"] {
+input[type="date"],
+input[type="password"] {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
@@ -159,3 +160,42 @@ button:hover {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  
+  .btn-page {
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-page:hover {
+    background: var(--morado);
+    transform: scale(1.05);
+    box-shadow: 0 0 12px var(--amarillo);
+  }
+  
+  .btn-page:disabled {
+    opacity: 0.4;
+    cursor: default;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .page-info {
+    font-weight: bold;
+    color: var(--azul);
+  }
+  

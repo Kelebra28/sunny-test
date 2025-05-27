@@ -1,8 +1,8 @@
-// login.js
 const API_URL = 'http://localhost:3000/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');
+    const errorDiv = document.getElementById('login-error');
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -23,13 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(data.message || 'Credenciales incorrectas');
             }
 
-            // Guardar el token en localStorage y redirigir
+            // Limpiar error si estaba visible
+            errorDiv.style.display = 'none';
+            errorDiv.innerText = '';
+
+            // Guardar el token y redirigir
             localStorage.setItem('token', data.token);
-            window.location.href = './dashboard.html'; // <- puedes crear esta página luego
+            window.location.href = './dashboard.html';
 
         } catch (error) {
-            alert(`❌ Error: ${error.message}`);
             console.error(error);
+
+            errorDiv.style.display = 'block';
+            errorDiv.innerText = `❌ ${error.message}`;
+            errorDiv.style.background = '#ffcdd2';
+            errorDiv.style.color = '#b71c1c';
+            errorDiv.style.border = '1px solid #f44336';
         }
     });
 });
