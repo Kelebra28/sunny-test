@@ -2,7 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: ['https://sunny-test.vercel.app'],
+    methods: ['GET', 'POST'],
+    credentials: true
+  }));
 app.use(express.json());
 
 app.use('/api/encuesta', require('./routes/encuesta'));
