@@ -1,4 +1,4 @@
-const API_URL = 'http://167.86.108.177:3000/api';
+const API_URL = 'https://lasercreativo.com/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');

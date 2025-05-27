@@ -1,6 +1,6 @@
 import * as XLSX from 'https://cdn.sheetjs.com/xlsx-0.18.7/package/xlsx.mjs';
 
-const API_URL = 'http://167.86.108.177:3000/api';
+const API_URL = 'https://lasercreativo.com/api';
 let encuestasData = [];
 let encuestasPorPagina = 6;
 let paginaActual = 1;
