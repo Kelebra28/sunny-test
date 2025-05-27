@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'http://167.86.108.177/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');
