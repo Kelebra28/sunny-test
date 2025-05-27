@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Limpiar error si estaba visible
             errorDiv.style.display = 'none';
             errorDiv.innerText = '';
-            debugger
             // Guardar el token y redirigir
             localStorage.setItem('token', data.token);
             window.location.href = './dashboard.html';
